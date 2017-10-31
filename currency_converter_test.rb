@@ -6,7 +6,7 @@ class CurrencyConverterTest < Minitest::Test
     #create an instance so that it can be called later
     def setup
         @apples_to_oranges = CurrencyConverter.new("Apple", "Orange", 2)
-        @amount = 5
+        @amount = "5"
     end
 
     #this checks to make sure a new converter instance can be created
@@ -34,13 +34,31 @@ class CurrencyConverterTest < Minitest::Test
         end
 
         #This is the test we want to work
-        #already planned that the initialization will take in 3 errors
-        @cc = CurrencyConverter.new("arg1", "arg2", "arg3")
+        #already planned that the initialization will take in 3 arguments
+        @cc = CurrencyConverter.new("arg1", "arg2", 3)
         #take the 3 arguments and assign them
+
         assert_equal "arg1", @cc.currency_one # @cc.currency_one name of instance variables
         assert_equal "arg2", @cc.currency_two # @cc.currency_two name of instance variables
-        assert_equal "arg3", @cc.conversion_rate # @cc.conversion_rate name of instance variables
+        assert_equal 3, @cc.conversion_rate # @cc.conversion_rate name of instance variables
+
+        assert_raises "Invalid format." do
+            CurrencyConverter.new(1, 2, "3")
+        end
+
     end
+
+    # def test_raises_error_when_currency_is_a_number
+    #     assert_raises "Currency has invalid format." do
+    #         CurrencyConverter.new(1, 2, 3)
+    #     end
+    # end
+
+    # def test_raises_error_when_conversion_rate_is_string
+    #     assert_raises "Conversion Rate has invalid format." do
+    #         CurrencyConverter.new(1, 2, "3")
+    #     end
+    # end
 
     def test_convert_currency_one_to_two
         #AGAIN....test passes if it doesn't work
