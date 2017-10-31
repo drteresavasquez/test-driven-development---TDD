@@ -1,0 +1,6 @@
+1. Write Test
+2. Run test => Test fails
+3. Write Code to make test pass
+4. Run test => test passes
+5. Refactor Code
+6. Run test => test should still pass
