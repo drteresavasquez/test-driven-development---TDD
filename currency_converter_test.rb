@@ -65,7 +65,7 @@ class CurrencyConverterTest < Minitest::Test
 
         # without the self in the main file
         # @expected_value = @amount * (1.0/@apples_to_oranges.conversion_rate) # Use 1.0 to get whole number
-        
+
         @expected_value = @amount * @apples_to_oranges.reverse_conversion_rate # Use 1.0 to get whole number
         
         # This test will pass if it is right!
